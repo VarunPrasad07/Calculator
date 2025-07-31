@@ -1,0 +1,14 @@
+module calculator(
+input [3:0] A,B,
+input [1:0]sel,
+output [7:0] result
+);
+wire [4:0]S,D;
+wire [7:0] pro,quo;
+full_adder add(A,B,S);
+substractor sub(A,B,D);
+multiplier mul(A,B,pro);
+divider div(A,B,quo);
+assign result =(sel==2'b00)?{3'b000,S}:
+(sel==2'b01)?{3'b000,D}:(sel==2'b10)?pro : quo;
+endmodule 
