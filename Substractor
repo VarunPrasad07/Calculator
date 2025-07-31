@@ -1,0 +1,10 @@
+module substractor( input [3:0] a,b, output [4:0] diff);
+wire [3:0]b_not;
+wire [3:0]temp;
+not (b_not[0],b[0]);
+not (b_not[1],b[1]);
+not (b_not[2],b[2]);
+not (b_not[3],b[3]);
+full_adder sub1(.a1(a),.b1(b_not),.s(temp));
+full_adder sub2(.a1(temp[3:0]),.b1(4'b0001),.s(diff));
+endmodule 
