@@ -1,0 +1,13 @@
+module adder( input a,b,c,
+output sum,cout);
+xor(sum,a,b,c);
+assign cout=(a&b)+(b&c)+(c&a);
+endmodule 
+module full_adder(input [3:0] a1,b1,
+output [4:0] s);
+wire c1,c2,c3;
+adder fa0(a1[0], b1[0], 0, s[0], c1);
+  adder fa1(a1[1], b1[1], c1, s[1], c2);
+  adder fa2(a1[2], b1[2], c2, s[2], c3);
+  adder fa3(a1[3], b1[3], c3, s[3], s[4]);
+endmodule
